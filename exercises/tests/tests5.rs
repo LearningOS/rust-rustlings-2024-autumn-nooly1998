@@ -22,7 +22,8 @@
 // Execute `rustlings hint tests5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+
+use std::slice::SliceIndex;
 
 /// # Safety
 ///
@@ -31,8 +32,15 @@ unsafe fn modify_by_address(address: usize) {
     // TODO: Fill your safety notice of the code block below to match your
     // code's behavior and the contract of this function. You may use the
     // comment of the test below as your format reference.
+    // Safety Notice:
+    // - The caller must ensure that `address` is a valid, writable memory address.
+    // - The address must be properly aligned for a `u32`.
+    // - No other references (mutable or immutable) should point to the same memory location
+    //   to avoid data races and undefined behavior.
     unsafe {
-        todo!("Your code goes here")
+        let addr: *mut u32 = address as *mut u32;
+
+        *addr = 0xAABBCCDD;
     }
 }
 
