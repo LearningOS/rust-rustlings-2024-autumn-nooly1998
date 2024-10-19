@@ -10,7 +10,6 @@ fn main() {
         .duration_since(std::time::UNIX_EPOCH)
         .unwrap()
         .as_secs(); // What's the use of this timestamp here?
-    let cargo:TEST_FOO = timestamp.to_string();
     let your_command = format!(
         "rustc-env=TEST_FOO={}",
         timestamp
